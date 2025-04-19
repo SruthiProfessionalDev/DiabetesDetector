@@ -1,35 +1,77 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import axios from "axios";
+import "./App.css"; 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [form, setForm] = useState({
+    Pregnancies: 0,
+    Glucose: 0,
+    BloodPressure: 0,
+    SkinThickness: 0,
+    Insulin: 0,
+    BMI: 0,
+    DiabetesPedigreeFunction: 0,
+    Age: 0
+  });
+
+  const [result, setResult] = useState("");
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: parseFloat(e.target.value) });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("http://127.0.0.1:8000/predict", form);
+      setResult(res.data.prediction);
+    } catch (err) {
+      console.error(err);
+      setResult("Error making prediction.");
+    }
+  };
+
+  const handleReset = () => {
+    setForm({
+      Pregnancies: 0,
+      Glucose: 0,
+      BloodPressure: 0,
+      SkinThickness: 0,
+      Insulin: 0,
+      BMI: 0,
+      DiabetesPedigreeFunction: 0,
+      Age: 0
+    });
+    setResult(""); // Clear result as well
+  };  
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="container">
+      <h2>🩺 Diabetes Prediction</h2>
+      <form onSubmit={handleSubmit}>
+        {Object.keys(form).map((key) => (
+          <div key={key}>
+            <label>{key}</label>
+            <input
+              type="number"
+              name={key}
+              step="any"
+              value={form[key]}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        ))}
+        <div style={{ display: "flex", gap: "10px" }}>
+          <button type="submit">Predict</button>
+          <button type="reset-button" onClick={handleReset} style={{ backgroundColor: "#ccc", color: "#000" }}>
+            Reset All
+          </button>
+        </div>
+      </form>
+      {result && <p><strong>Prediction:</strong> {result}</p>}
+    </div>
+  );
 }
 
-export default App
+export default App;
