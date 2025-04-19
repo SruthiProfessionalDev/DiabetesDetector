@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import "./App.css"; 
+import "./App.css";
 
 function App() {
   const [form, setForm] = useState({
@@ -42,8 +42,8 @@ function App() {
       DiabetesPedigreeFunction: 0,
       Age: 0
     });
-    setResult(""); // Clear result as well
-  };  
+    setResult(""); // Clear the prediction result
+  };
 
   return (
     <div className="container">
@@ -62,14 +62,18 @@ function App() {
             />
           </div>
         ))}
-        <div style={{ display: "flex", gap: "10px" }}>
+        <div className="button-group">
           <button type="submit">Predict</button>
-          <button type="reset-button" onClick={handleReset} style={{ backgroundColor: "#ccc", color: "#000" }}>
+          <button type="button" onClick={handleReset} className="reset-button">
             Reset All
           </button>
         </div>
       </form>
-      {result && <p><strong>Prediction:</strong> {result}</p>}
+      {result && (
+        <p>
+          <strong>Prediction:</strong> {result}
+        </p>
+      )}
     </div>
   );
 }
