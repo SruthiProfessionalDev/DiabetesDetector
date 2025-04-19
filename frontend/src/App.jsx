@@ -15,6 +15,7 @@ function App() {
   });
 
   const [result, setResult] = useState("");
+  const [diet, setDiet] = useState(""); // 👉 ADD: State for diet suggestion
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: parseFloat(e.target.value) });
@@ -25,9 +26,18 @@ function App() {
     try {
       const res = await axios.post("http://127.0.0.1:8000/predict", form);
       setResult(res.data.prediction);
+
+      // 👉 ADD: Only fetch diet if person is diabetic
+      if (res.data.prediction === "Positive for Diabetes") {
+        const dietRes = await axios.post("http://127.0.0.1:8000/diet_suggestion", form);
+        setDiet(dietRes.data.diet);
+      } else {
+        setDiet(""); // Clear old suggestions
+      }
     } catch (err) {
       console.error(err);
       setResult("Error making prediction.");
+      setDiet(""); // Reset diet too
     }
   };
 
@@ -42,7 +52,8 @@ function App() {
       DiabetesPedigreeFunction: 0,
       Age: 0
     });
-    setResult(""); // Clear the prediction result
+    setResult(""); 
+    setDiet(""); // 👉 ADD: Reset diet suggestion
   };
 
   return (
@@ -69,10 +80,19 @@ function App() {
           </button>
         </div>
       </form>
+      
       {result && (
         <p>
           <strong>Prediction:</strong> {result}
         </p>
+      )}
+
+      {/* 👉 ADD: Show diet suggestion if available */}
+      {diet && (
+        <div className="diet-section">
+          <h3>🍽️ Dietary Suggestion</h3>
+          <pre>{diet}</pre>
+        </div>
       )}
     </div>
   );
