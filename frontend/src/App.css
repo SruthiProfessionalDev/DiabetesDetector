@@ -3,6 +3,9 @@ body {
   background: #f0f4f8;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
@@ -35,7 +38,7 @@ input {
   box-sizing: border-box;
 }
 
-button {
+/* button {
   width: 100%;
   padding: 10px;
   background-color: #0077cc;
@@ -55,4 +58,37 @@ p {
   margin-top: 20px;
   font-size: 18px;
 }
+ */
 
+ .button-group {
+  display: flex;
+  gap: 10px;
+}
+
+button[type="submit"],
+.reset-button {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  background-color: #0077cc;
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background-color: #005fa3;
+}
+
+.reset-button {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.reset-button:hover {
+  background-color: #ccc;
+}
