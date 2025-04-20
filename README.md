@@ -29,9 +29,10 @@ Ensure you have the following installed:
 - Node.js and npm
 - Git
 
-### Clone the Repository
+## Starting up with the project
 
 ```bash
+### Clone the Repository
 git clone https://github.com/your-username/diabetes-detector.git
 cd diabetes-detector
 
