@@ -1,2 +1,8 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+
+# Tell GitHub to ignore these languages in stats
+*.c linguist-vendored
+*.cpp linguist-vendored
+*.pyx linguist-vendored
