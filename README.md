@@ -91,10 +91,6 @@ The prediction output will be:
 - ✅ **Positive** – User is likely to have diabetes.
 - ❌ **Negative** – User is not likely to have diabetes.
 
-You may also display a confidence score, such as:
-
-> _"Prediction: Positive (84% confidence)"_
-
 ---
 
 ### Model
