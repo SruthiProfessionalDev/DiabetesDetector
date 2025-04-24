@@ -15,7 +15,7 @@ function App() {
   });
 
   const [result, setResult] = useState("");
-  const [diet, setDiet] = useState(""); // 👉 ADD: State for diet suggestion
+  const [diet, setDiet] = useState(""); // State for diet suggestion
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: parseFloat(e.target.value) });
@@ -27,7 +27,7 @@ function App() {
       const res = await axios.post("http://127.0.0.1:8000/predict", form);
       setResult(res.data.prediction);
 
-      // 👉 ADD: Only fetch diet if person is diabetic
+      // Only fetch diet if person is diabetic
       if (res.data.prediction === "Diabetic") {
         const dietRes = await axios.post("http://127.0.0.1:8000/diet_suggestion", form);
         setDiet(dietRes.data);
@@ -53,11 +53,12 @@ function App() {
       Age: 0
     });
     setResult(""); 
-    setDiet(""); // 👉 ADD: Reset diet suggestion
+    setDiet(""); // Reset diet suggestion
   };
 
   return (
     <div className="container">
+      <div className="suggestion-container">
       <h2>🩺 Diabetes Prediction</h2>
       <form onSubmit={handleSubmit}>
         {Object.keys(form).map((key) => (
@@ -86,14 +87,17 @@ function App() {
           <strong>Prediction:</strong> {result}
         </p>
       )}
+      </div>
 
-      {/* 👉 ADD: Show diet suggestion if available */}
+      <div className="prediction-container">
+        {/* Show diet suggestion if available */}
       {diet && (
         <div className="diet-section">
           <h3>🍽️ Dietary Suggestion</h3>
           <pre>{diet}</pre>
         </div>
       )}
+      </div>
     </div>
   );
 }
