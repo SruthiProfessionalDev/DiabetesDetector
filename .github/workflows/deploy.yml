@@ -1,4 +1,4 @@
-name: Deploy Frontend and Backend to Azure
+name: Deploy React & FastAPI to Azure
 
 on:
   push:
@@ -16,26 +16,24 @@ jobs:
       - name: Set up Python environment
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.12.6'
 
-      - name: Install dependencies
+      - name: Install backend dependencies
         run: |
-          pip install -r backend/requirements.txt
+          cd backend
+          pip install -r requirements.txt
 
       - name: Build React app
         run: |
           cd frontend
           npm install
-          npm run dev
-
-      - name: Copy frontend build to backend
-        run: |
-          cp -r frontend/build backend/
+          npm run build
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: DiabetesPredictionAndDietSuggestion
+          app-name: "DiabetesPredictionAndDietSuggestion"  
           publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
           package: .
+
 
