@@ -30,7 +30,7 @@ function App() {
       // 👉 ADD: Only fetch diet if person is diabetic
       if (res.data.prediction === "Diabetic") {
         const dietRes = await axios.post("http://127.0.0.1:8000/diet_suggestion", form);
-        setDiet(dietRes.data.diet);
+        setDiet(dietRes.data);
       } else {
         setDiet(""); // Clear old suggestions
       }

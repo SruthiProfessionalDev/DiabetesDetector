@@ -1,28 +1,3 @@
-# # main.py
-# from fastapi import FastAPI
-
-# app = FastAPI()
-
-# @app.get("/")
-# def read_root():
-#     return {"message": "FastAPI is running!"}
-
-##############################
-# from fastapi import FastAPI
-# from predict import make_prediction
-# from schema import PatientData
-
-# app = FastAPI()
-
-# @app.get("/")
-# def root():
-#     return {"message": "Diabetes Prediction API is running."}
-
-# @app.post("/predict")
-# def predict(data: PatientData):
-#     result = make_prediction(data)
-#     return {"prediction": result}
-
 import os
 import joblib
 import numpy as np
@@ -34,16 +9,21 @@ from azure.ai.inference import ChatCompletionsClient
 from azure.ai.inference.models import SystemMessage, UserMessage
 from azure.core.credentials import AzureKeyCredential
 
-endpoint = "https://models.github.ai/inference"
-llm_model = "openai/gpt-4.1-mini"
+#Json
+# endpoint = "https://jason-m9uvow7i-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4o-mini"
+# llm_model = "gpt-4o-mini"
+
+#Sruthi
+endpoint = "https://diabetesdetectiondietsuggestion.openai.azure.com/openai/deployments/gpt-4o-mini"
+llm_model = "gpt-4o-mini"
 
 # .env Configuration
 load_dotenv()
-token = os.environ["GITHUB_TOKEN"]
+azure_openai_key = os.environ.get("AZURE_OPENAI_KEY")
 
 client = ChatCompletionsClient(
     endpoint = endpoint,
-    credential = AzureKeyCredential(token),
+    credential = AzureKeyCredential(azure_openai_key),
 )
 
 app = FastAPI()
@@ -91,13 +71,15 @@ def predict(input: DiabetesInput):
 
 @app.post("/diet_suggestion")
 def mealPlan(input: DiabetesInput):
+
+    # String format
     context = """
     You are a helpful AI assistant specializing in generating personalized and balanced 1-day meal plan suggestions for people recently diagnosed with diabetes,
     including Breakfast, Lunch, Dinner, and Snacks.
     Provide balanced meals suitable for blood sugar management.
     Always include a clear explanation for each meal choice, focusing on the benefits for blood sugar or diabetes management.
-    **Output the entire response exclusively as a JSON object.** 
-    Do not include any conversational text, introductions, or conclusions outside the JSON.
+    Present the meal plan clearly and concisely as a formatted string.
+    Do not include any conversational text, introductions, or conclusions.
     """
 
     input_message = f"""
@@ -112,32 +94,24 @@ def mealPlan(input: DiabetesInput):
     - Age: {input.Age} years
 
     This person has recently been diagnosed with diabetes.
-    Generate a personalized 1-day meal plan including breakfast, lunch, dinner, and snacks, in JSON format.
+    Generate a personalized 1-day meal plan including breakfast, lunch, dinner, and snacks as a formatted string.
     Keep it easy to prepare, balanced, and suitable for someone with these metrics and recent diabetes diagnosis.
 
-    Example JSON Structure:
-    {{
-    "meal_plan": {{
-        "breakfast": {{
-        "meal": "Scrambled eggs with spinach + 1 slice whole grain toast + 1/2 avocado + black coffee.",
-        "explanation": "Eggs and avocado provide healthy fats and protein, keeping blood sugar stable. Whole grain toast offers slow-digesting carbs. Spinach adds fiber and magnesium, which can improve insulin sensitivity."
-        }},
-        "lunch": {{
-        "meal": "Grilled chicken salad with leafy greens, cucumbers, tomatoes, olive oil, and vinegar dressing.",
-        "explanation": "High protein, low glycemic index meal. Olive oil helps reduce inflammation. Salad is low-calorie and high in fiber, helpful for BMI control."
-        }},
-        "snack": {{
-        "meal": "A handful of almonds + 1 small apple.",
-        "explanation": "Healthy fats and protein from almonds slow the sugar spike from the apple. Low-calorie but satisfying."
-        }},
-        "dinner": {{
-        "meal": "Baked salmon, steamed broccoli, and quinoa.",
-        "explanation": "Salmon offers omega-3s for heart health (important in diabetes). Broccoli provides fiber and antioxidants. Quinoa is a good carb with protein and fiber."
-        }}
-    }}
-    }}
+    Format the output clearly, listing each meal category (Breakfast, Lunch, Snack, Dinner) followed by the meal suggestion and its explanation.
 
-    Ensure the entire output is a valid JSON object following this structure.
+    Example output Structure:
+    Breakfast:
+        [Meal] Scrambled eggs with spinach + 1 slice whole grain toast + 1/2 avocado + black coffee.
+        [Why?] Eggs and avocado provide healthy fats and protein, keeping blood sugar stable. Whole grain toast offers slow-digesting carbs. Spinach adds fiber and magnesium, which can improve insulin sensitivity.
+    Lunch:
+        [Meal] Grilled chicken salad with leafy greens, cucumbers, tomatoes, olive oil, and vinegar dressing.
+        [Why?] High protein, low glycemic index meal. Olive oil helps reduce inflammation. Salad is low-calorie and high in fiber, helpful for BMI control.
+    Snack:
+        [Meal] A handful of almonds + 1 small apple.
+        [Why?] Healthy fats and protein from almonds slow the sugar spike from the apple. Low-calorie but satisfying.
+    Dinner:
+        [Meal] Baked salmon, steamed broccoli, and quinoa.
+        [Why?] Salmon offers omega-3s for heart health (important in diabetes). Broccoli provides fiber and antioxidants. Quinoa is a good carb with protein and fiber.
     """
 
     response = client.complete(
@@ -149,8 +123,5 @@ def mealPlan(input: DiabetesInput):
         top_p = 1.0,
         model = llm_model
     )
-
-    # Return a JSON Format file
-    # print(response.choices[0].message.content)
 
     return response.choices[0].message.content
