@@ -51,7 +51,7 @@ class DiabetesInput(BaseModel):
     DiabetesPedigreeFunction: float
     Age: float
 
-@app.post("/predict")
+@app.post("/")
 def predict(input: DiabetesInput):
     data = [[
         input.Pregnancies,

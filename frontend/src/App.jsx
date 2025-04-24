@@ -24,7 +24,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://127.0.0.1:8000/predict", form);
+      const res = await axios.post("http://127.0.0.1:8000", form);
       setResult(res.data.prediction);
 
       // Only fetch diet if person is diabetic
