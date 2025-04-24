@@ -57,7 +57,23 @@ function App() {
   };
 
   return (
+    <div className="main-container">
+      <div className="diabetes-detector-container">
+      <h1 className="diabetes-detector-heading">Diabetes Detector</h1>
+      <p className="diabetes-detector-paragraph">
+        The Diabetes Detector is an AI-powered tool that helps identify the likelihood of a person developing diabetes based on various health metrics, such as age, BMI, blood pressure, and family history. By analyzing these factors, the tool provides a prediction of whether a person is at risk of diabetes, which can help in early diagnosis and prevention.
+      </p>
+      <h2 className="diabetes-detector-suggestion-heading">Suggestions</h2>
+      <ul className="diabetes-detector-suggestions-list">
+        <li>Maintain a healthy diet: Focus on eating more vegetables, whole grains, and lean proteins.</li>
+        <li>Stay active: Regular physical activity, like walking or swimming, can help maintain a healthy weight.</li>
+        <li>Monitor blood sugar levels: If you are at risk or have diabetes, regular check-ups are crucial for early intervention.</li>
+        <li>Consult a healthcare professional: If you have any concerns about diabetes, seek medical advice for a personalized plan.</li>
+      </ul>
+      </div>
     <div className="container">
+      
+    
       <div className="suggestion-container">
       <h2>🩺 Diabetes Prediction</h2>
       <form onSubmit={handleSubmit}>
@@ -98,6 +114,7 @@ function App() {
         </div>
       )}
       </div>
+    </div>
     </div>
   );
 }
