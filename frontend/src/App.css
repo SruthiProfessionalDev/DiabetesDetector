@@ -92,3 +92,9 @@ button[type="submit"]:hover {
 .reset-button:hover {
   background-color: #ccc;
 }
+
+.diet-section pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
