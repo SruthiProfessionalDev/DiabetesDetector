@@ -26,7 +26,7 @@ jobs:
         run: |
           cd frontend
           npm install
-          npm run build
+          npm run dev
 
       - name: Copy frontend build to backend
         run: |
