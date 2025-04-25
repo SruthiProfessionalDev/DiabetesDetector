@@ -29,6 +29,10 @@ Ensure you have the following installed:
 - Node.js and npm
 - Git
 
+# Dataset
+The Dataset was taken from kaggle
+https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database
+
 ## Starting up with the project
 
 ```bash
