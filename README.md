@@ -19,6 +19,7 @@ The model is trained on historical medical data and is accessible through a simp
 - **Machine Learning Libraries**: Scikit-learn, Pandas, NumPy
 - **Version Control**: Git
 - **Other Tools**: GitHub Action
+
 ## Installation
 
 Follow these steps to run the project locally.
