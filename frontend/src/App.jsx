@@ -70,6 +70,7 @@ function App() {
         <li>Monitor blood sugar levels: If you are at risk or have diabetes, regular check-ups are crucial for early intervention.</li>
         <li>Consult a healthcare professional: If you have any concerns about diabetes, seek medical advice for a personalized plan.</li>
       </ul>
+      <footer className="diabetes-detector-footer">The Dataset was taken from kaggle <a href="https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database" target="_blank" rel="noopener noreferrer">https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database</a></footer>
       </div>
     <div className="container">
       
