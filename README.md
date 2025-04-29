@@ -1,5 +1,13 @@
 # Diabetes Detector
 
+#AISkillFestHackathone
+#AIAgentsHackathone
+Team Members - 2
+Leader - Sruthi Balasubramaniam
+members - Json Tsoi
+Description - We are undergraduate students eagerly participating in this hackathon to develop our skills in Artificial Intelligence and Microsoft Azure Services.
+
+
 This project predicts the likelihood of a person developing diabetes based on medical data such as age, BMI, glucose levels, etc. The goal of this project is to help individuals assess their risk of diabetes using a machine learning model.
 
 The model is trained on historical medical data and is accessible through a simple web application where users can input their data and receive a prediction.
@@ -15,7 +23,7 @@ The model is trained on historical medical data and is accessible through a simp
 ## Tech Stack
 
 - **Frontend**: React.js
-- **Backend**: Python (Flask), Scikit-learn for machine learning
+- **Backend**: Python (FastAPI), Scikit-learn for machine learning
 - **Machine Learning Libraries**: Scikit-learn, Pandas, NumPy
 - **Version Control**: Git
 - **Other Tools**: GitHub Action
@@ -47,8 +55,12 @@ cd diabetes-detector
 # Navigate to the backend directory
 cd backend
 
-# Install Python dependencies
+# Install Python dependencies in backend and frontend seperately
 pip install -r requirements.txt
+
+# To use Azure OpenAI service
+- in the .env file add ur azure key in
+AZURE_OPENAI_KEY= Your Key
 
 # Run the backend server
 uvicorn main:app --reload
