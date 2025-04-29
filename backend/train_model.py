@@ -22,3 +22,4 @@ model.fit(X_train, y_train)
 # Save model
 joblib.dump(model, "diabetes_model.pkl")
 print("✅ Model saved as diabetes_model.pkl")
+
