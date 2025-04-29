@@ -1,10 +1,15 @@
 # Diabetes Detector
 
 #AISkillFestHackathone
+
 #AIAgentsHackathone
+
 Team Members - 2
+
 Leader - Sruthi Balasubramaniam
+
 members - Kam Fung Tsoi
+
 Description - We are undergraduate students eagerly participating in this hackathon to develop our skills in Artificial Intelligence and Microsoft Azure Services.
 
 
