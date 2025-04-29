@@ -4,7 +4,7 @@
 #AIAgentsHackathone
 Team Members - 2
 Leader - Sruthi Balasubramaniam
-members - Json Tsoi
+members - Kam Fung Tsoi
 Description - We are undergraduate students eagerly participating in this hackathon to develop our skills in Artificial Intelligence and Microsoft Azure Services.
 
 
@@ -45,35 +45,53 @@ https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database
 
 ## Starting up with the project
 
-```bash
 ### Clone the Repository
+
+```bash
 git clone https://github.com/SruthiProfessionalDev/DiabetesDetector.git
 cd diabetes-detector
+```
 
-## Backend Setup
+### Backend Setup
 
+```bash
 # Navigate to the backend directory
 cd backend
 
 # Install Python dependencies in backend and frontend seperately
 pip install -r requirements.txt
+```
 
-# To use Azure OpenAI service
-- in the .env file add ur azure key in
-AZURE_OPENAI_KEY= Your Key
+### To setup the environment variables (using Azure OpenAI service)
 
-# Run the backend server
+Create a .env file in the backend directory and replace the placeholder to ur azure key, endpoint, and llm model
+
+```bash
+AZURE_OPENAI_KEY="your-azure-key"
+AZURE_ENDPOINT="your-endpoint-url"
+LLM_MODEL="gpt-4o-mini"
+```
+
+### Run the backend server
+
+```bash
 uvicorn main:app --reload
+```
 
-# After setting up the backend, navigate to the frontend directory
+### Frontend setup
+
+```bash
+#After setting up the backend, navigate to the frontend directory
 cd frontend
 
 # Install npm dependencies
 npm install
+```
 
 # Run the frontend development server
-npm run dev
 
+```bash
+npm run dev
 ```
 
 ## How It Works
