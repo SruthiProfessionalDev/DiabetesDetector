@@ -88,7 +88,7 @@ cd frontend
 npm install
 ```
 
-# Run the frontend development server
+### Run the frontend development server
 
 ```bash
 npm run dev
