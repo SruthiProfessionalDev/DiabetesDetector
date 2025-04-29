@@ -119,10 +119,20 @@ button[type="submit"]:hover {
   text-align: justify;
 }
 
+
 .diabetes-detector-instructions-list {
   font-size: 16px;
   line-height: 1.6;
   color: #000000;
+}
+
+/* Footer styling */
+.diabetes-detector-footer {
+  font-size: 12px;
+  color: #5e5e5e;
+  font-style: italic;
+  text-align: center;
+
 }
 
 /* Suggestions heading styling */

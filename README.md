@@ -10,6 +10,7 @@ The model is trained on historical medical data and is accessible through a simp
 - **User Interface**: Simple web app where users can input their medical data.
 - **Data Preprocessing**: The data is cleaned, processed, and used to train the model.
 - **Model Evaluation**: The model's performance is evaluated using metrics like accuracy, precision, and recall.
+- **Meal Suggestion**: A 1-day meal plan is suggested using historical medical data.
 
 ## Tech Stack
 
@@ -18,6 +19,7 @@ The model is trained on historical medical data and is accessible through a simp
 - **Machine Learning Libraries**: Scikit-learn, Pandas, NumPy
 - **Version Control**: Git
 - **Other Tools**: GitHub Action
+
 ## Installation
 
 Follow these steps to run the project locally.
@@ -29,11 +31,15 @@ Ensure you have the following installed:
 - Node.js and npm
 - Git
 
+# Dataset
+The Dataset was taken from kaggle
+https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database
+
 ## Starting up with the project
 
 ```bash
 ### Clone the Repository
-git clone https://github.com/your-username/diabetes-detector.git
+git clone https://github.com/SruthiProfessionalDev/DiabetesDetector.git
 cd diabetes-detector
 
 ## Backend Setup
@@ -45,16 +51,16 @@ cd backend
 pip install -r requirements.txt
 
 # Run the backend server
-python app.py  # or flask run if using Flask
+uvicorn main:app --reload
 
-# Navigate to the frontend directory
+# After setting up the backend, navigate to the frontend directory
 cd frontend
 
 # Install npm dependencies
 npm install
 
 # Run the frontend development server
-npm start
+npm run dev
 
 ```
 
@@ -88,8 +94,8 @@ The user is prompted to input the following data:
 
 The prediction output will be:
 
-- ✅ **Positive** – User is likely to have diabetes.
-- ❌ **Negative** – User is not likely to have diabetes.
+- ✅ **Diabetic** – User is likely to have diabetes.
+- ❌ **Not diabetic** – User is not likely to have diabetes.
 
 ---
 

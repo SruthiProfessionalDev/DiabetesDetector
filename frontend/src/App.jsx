@@ -59,6 +59,7 @@ function App() {
   return (
     <div className="main-container">
       <div className="diabetes-detector-container">
+
       <h1 className="diabetes-detector-heading">Diabetes Detector and Diet Suggestion</h1>
 
 <p className="diabetes-detector-paragraph">
@@ -160,6 +161,7 @@ function App() {
   <li><strong>Step 1:</strong> Look at your birth date to determine your current age.</li>
   <li><strong>Step 2:</strong> If you're over the age of 45, your risk of diabetes increases.</li>
 </ul>
+
 
       </div>
     <div className="container">
