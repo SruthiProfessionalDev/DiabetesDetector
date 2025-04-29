@@ -39,7 +39,7 @@ https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database
 
 ```bash
 ### Clone the Repository
-git clone https://github.com/your-username/diabetes-detector.git
+git clone https://github.com/SruthiProfessionalDev/DiabetesDetector.git
 cd diabetes-detector
 
 ## Backend Setup
