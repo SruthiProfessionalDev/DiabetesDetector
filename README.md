@@ -1,4 +1,4 @@
-# Diabetes Detector
+# Diabetes Detector and Diet Suggestions
 
 #AISkillFestHackathone
 
