@@ -161,6 +161,16 @@ function App() {
   <li><strong>Step 1:</strong> Look at your birth date to determine your current age.</li>
   <li><strong>Step 2:</strong> If you're over the age of 45, your risk of diabetes increases.</li>
 </ul>
+<h2 className="diabetes-detector-instructions-heading">Diet Tips and Healthy Living</h2>
+<ul className="diabetes-detector-topic-steps">
+  <li>🍎 Eat more fruits, vegetables, and whole grains.</li>
+  <li>🚫 Avoid junk food, sugary drinks, and fast food.</li>
+  <li>🥗 Use a small plate and don’t overeat.</li>
+  <li>💧 Drink 6–8 glasses of water every day.</li>
+  <li>🚶‍♂️ Walk or move your body daily (30 mins is great).</li>
+  <li>📝 Keep track of your meals and how you feel.</li>
+  <li>🩺 Visit a doctor for regular check-ups.</li>
+</ul>
 
 
       </div>
