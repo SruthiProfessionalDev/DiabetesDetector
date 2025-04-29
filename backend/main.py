@@ -9,20 +9,14 @@ from azure.ai.inference import ChatCompletionsClient
 from azure.ai.inference.models import SystemMessage, UserMessage
 from azure.core.credentials import AzureKeyCredential
 
-#Json
-# endpoint = "https://jason-m9uvow7i-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4o-mini"
-# llm_model = "gpt-4o-mini"
-
-#Sruthi
-endpoint = "https://diabetesdetectiondietsuggestion.openai.azure.com/openai/deployments/gpt-4o-mini"
-llm_model = "gpt-4o-mini"
-
 # .env Configuration
 load_dotenv()
 azure_openai_key = os.environ.get("AZURE_OPENAI_KEY")
+azure_endpoint = os.environ.get("AZURE_ENDPOINT")
+llm_model = os.environ.get("LLM_MODEL")
 
 client = ChatCompletionsClient(
-    endpoint = endpoint,
+    endpoint = azure_endpoint,
     credential = AzureKeyCredential(azure_openai_key),
 )
 
