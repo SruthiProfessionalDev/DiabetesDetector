@@ -13,9 +13,7 @@ members - Kam Fung Tsoi
 Description - We are undergraduate students eagerly participating in this hackathon to develop our skills in Artificial Intelligence and Microsoft Azure Services.
 
 
-This project predicts the likelihood of a person developing diabetes based on medical data such as age, BMI, glucose levels, etc. The goal of this project is to help individuals assess their risk of diabetes using a machine learning model.
-
-The model is trained on historical medical data and is accessible through a simple web application where users can input their data and receive a prediction.
+This project predicts the likelihood of a person developing diabetes based on medical data such as age, BMI, glucose levels, etc. The goal of this project is to help individuals assess their risk of diabetes using a machine learning model. The model is trained on historical medical data and is accessible through a simple web application where users can input their data and receive a prediction. It also gives diet suggestion using Azure openAI service.
 
 ## Features
 
