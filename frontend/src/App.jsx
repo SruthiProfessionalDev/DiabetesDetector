@@ -172,6 +172,9 @@ function App() {
   <li>🩺 Visit a doctor for regular check-ups.</li>
 </ul>
 
+{/* Footer Section */}
+<footer className="diabetes-detector-footer">The Dataset was taken from kaggle <a href="https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database" target="_blank" rel="noopener noreferrer">https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database</a></footer>
+
 
       </div>
     <div className="container">
