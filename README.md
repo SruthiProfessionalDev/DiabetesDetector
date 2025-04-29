@@ -28,7 +28,7 @@ This project predicts the likelihood of a person developing diabetes based on me
 - **Frontend**: React.js
 - **Backend**: Python (FastAPI)
 - **Machine Learning Libraries**: Scikit-learn, Pandas
-- **Version Control**: Git
+- **Version Control**: Git, GitHub
 
 
 ## Installation
