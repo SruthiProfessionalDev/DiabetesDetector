@@ -26,10 +26,10 @@ This project predicts the likelihood of a person developing diabetes based on me
 ## Tech Stack
 
 - **Frontend**: React.js
-- **Backend**: Python (FastAPI), Scikit-learn for machine learning
+- **Backend**: Python (FastAPI)
 - **Machine Learning Libraries**: Scikit-learn, Pandas
 - **Version Control**: Git
-- **Other Tools**: GitHub Action
+
 
 ## Installation
 
