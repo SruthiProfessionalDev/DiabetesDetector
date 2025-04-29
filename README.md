@@ -24,7 +24,7 @@ The model is trained on historical medical data and is accessible through a simp
 
 - **Frontend**: React.js
 - **Backend**: Python (FastAPI), Scikit-learn for machine learning
-- **Machine Learning Libraries**: Scikit-learn, Pandas, NumPy
+- **Machine Learning Libraries**: Scikit-learn, Pandas
 - **Version Control**: Git
 - **Other Tools**: GitHub Action
 
@@ -117,15 +117,6 @@ The model is trained using a dataset like the **PIMA Indians Diabetes Dataset**,
 The chosen model is a **Random Forest Classifier**, known for high accuracy in classification tasks.
 
 ---
-
-### Model Evaluation
-
-The model performance is measured using:
-
-- **Accuracy**
-- **Precision**
-- **Recall**
-- **F1-Score**
 
 These metrics help evaluate how well the model is predicting diabetes risk.
 
