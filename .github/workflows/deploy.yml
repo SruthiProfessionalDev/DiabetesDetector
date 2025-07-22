@@ -29,11 +29,6 @@ jobs:
           npm install
           npm run build
 
-      - name: Copy React build to backend
-        run: |
-          rm -rf backend/app/static  # Optional: clear old build if exists
-          mkdir -p backend/app/static
-          cp -r frontend/build/* backend/app/static/
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
