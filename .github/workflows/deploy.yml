@@ -1,0 +1,43 @@
+name: Deploy React & FastAPI to Azure
+
+on:
+  push:
+    branches:
+      - main  # Or your deployment branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12.6'
+
+      - name: Install backend dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+
+      - name: Build React frontend
+        run: |
+          cd frontend
+          npm install
+          npm run build
+
+      - name: Copy React build to backend
+        run: |
+          rm -rf backend/app/static  # Optional: clear old build if exists
+          mkdir -p backend/app/static
+          cp -r frontend/build/* backend/app/static/
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: "DiabetesPredictionAndDietSuggestion"
+          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
+          package: backend
